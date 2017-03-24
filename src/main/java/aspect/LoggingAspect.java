@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class LoggingAspect {
+public class LoggingAspect { //a comment from gitHub ... with SAM 
 	
 	public void logBefore(JoinPoint joinpoint) {
 		Logger logger = Logger.getLogger(joinpoint.getTarget().getClass());
