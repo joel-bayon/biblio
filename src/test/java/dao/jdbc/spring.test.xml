@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx.xsd"   >
+	
+	<bean class="dao.hibernate.LivreDaoHibernate"/>
+	
+
+<bean class="entity.Livre" id="Amééélie Nothomb" scope="prototype">
+	<constructor-arg name="titre" value="Stupeur et tremblements"/>
+	<constructor-arg name="parution" value="1999"/>
+	<constructor-arg name="auteur" value="Amééélie Nothomb"/>
+</bean>
+
+<bean class="entity.Livre" id="Amélie Nothomb" scope="prototype">
+	<property name="titre" value="Stupeur et tremblements"/>
+	<property name="parution" value="1999"/>
+	<property name="auteur" value="Amélie Nothomb"/>
+</bean>
+
+<bean class="entity.Livre" id="Hergé" scope="prototype">
+	<property name="titre" value="Tintin au Tibet"/>
+	<property name="parution" value="1960"/>
+	<property name="auteur" value="Hergé"/>
+</bean>
+
+	
+
+</beans>

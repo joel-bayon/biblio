@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bean:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:bean="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security.xsd" >
+	
+	<http> 
+	<form-login login-page="/loginSecurity.jsp"
+				default-target-url="/home/accueil"/>
+    <http-basic />
+    <logout delete-cookies="JSESSIONID"/>
+    <remember-me key="uniqueAndSecret" token-validity-seconds="86400"/>
+		<intercept-url pattern="/loginSecurity.jsp" access="ROLE_ANONYMOUS"/> 
+		<intercept-url pattern="/**" access="ROLE_USER" /> 
+	</http> 
+	
+	<authentication-manager>
+	  <authentication-provider>
+		<user-service>
+			<user name="1" password="a" 
+					 authorities="ROLE_USER" />
+			<user name="2" password="b" 
+					 authorities="ROLE_USER, ROLE_ADMIN" />
+			</user-service>
+		</authentication-provider>
+	</authentication-manager>
+
+</bean:beans>

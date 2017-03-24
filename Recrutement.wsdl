@@ -1,0 +1,1022 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://172.16.20.96:8080/rhtest/rhtest/Recrutement" 
+xmlns:apachesoap="http://xml.apache.org/xml-soap" 
+xmlns:impl="http://172.16.20.96:8080/rhtest/rhtest/Recrutement" 
+xmlns:intf="http://172.16.20.96:8080/rhtest/rhtest/Recrutement" 
+xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+xmlns:tns1="Recrutement" 
+xmlns:tns2="http://bean.ws.framework.civitas.fr" 
+xmlns:tns3="http://ref.bean.ws.rhcommun.metier.civitas.fr" 
+xmlns:tns4="http://exception.metier.framework.civitas.fr" 
+xmlns:tns5="http://ref.bean.rc.rhcommun.metier.civitas.fr" 
+xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" 
+xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema targetNamespace="Recrutement" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://exception.metier.framework.civitas.fr"/>
+   <import namespace="http://ref.bean.rc.rhcommun.metier.civitas.fr"/>
+   <import namespace="http://ref.bean.ws.rhcommun.metier.civitas.fr"/>
+   <import namespace="http://172.16.20.96:8080/rhtest/rhtest/Recrutement"/>
+   <import namespace="http://bean.ws.framework.civitas.fr"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="MessagesWSBean">
+    <sequence>
+     <element name="code" nillable="true" type="soapenc:string"/>
+     <element name="libelle" nillable="true" type="soapenc:string"/>
+     <element name="type" nillable="true" type="soapenc:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="coopteur">
+    <complexContent>
+     <extension base="tns3:Referentiel">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="fichier">
+    <sequence>
+     <element name="nomFichier" nillable="true" type="soapenc:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="identite">
+    <sequence>
+     <element name="btqAdresse" nillable="true" type="soapenc:string"/>
+     <element name="codeCivilite" nillable="true" type="soapenc:int"/>
+     <element name="codeCommuneNaissance" nillable="true" type="soapenc:int"/>
+     <element name="codeDptNaissance" nillable="true" type="soapenc:string"/>
+     <element name="codeHandicap" nillable="true" type="soapenc:int"/>
+     <element name="codeNationalite" nillable="true" type="soapenc:int"/>
+     <element name="codePaysAdr" nillable="true" type="soapenc:int"/>
+     <element name="codePaysNaissance" nillable="true" type="soapenc:int"/>
+     <element name="codePostal" nillable="true" type="soapenc:string"/>
+     <element name="codeSituationMaritale" nillable="true" type="soapenc:int"/>
+     <element name="codeSituationMilitaire" nillable="true" type="soapenc:int"/>
+     <element name="complementAdr" nillable="true" type="soapenc:string"/>
+     <element name="contact" nillable="true" type="soapenc:string"/>
+     <element name="dateAdministration" nillable="true" type="soapenc:string"/>
+     <element name="dateAdresse" nillable="true" type="soapenc:string"/>
+     <element name="dateFPE" nillable="true" type="soapenc:string"/>
+     <element name="dateFPH" nillable="true" type="soapenc:string"/>
+     <element name="dateFPT" nillable="true" type="soapenc:string"/>
+     <element name="dateHandicap" nillable="true" type="soapenc:string"/>
+     <element name="dateNaissance" nillable="true" type="soapenc:string"/>
+     <element name="email" nillable="true" type="soapenc:string"/>
+     <element name="fax" nillable="true" type="soapenc:string"/>
+     <element name="fichier_cv" nillable="true" type="tns1:fichier"/>
+     <element name="mobile" nillable="true" type="soapenc:string"/>
+     <element name="nbEnfant" nillable="true" type="soapenc:int"/>
+     <element name="nomPatronymique" nillable="true" type="soapenc:string"/>
+     <element name="nomUsuel" nillable="true" type="soapenc:string"/>
+     <element name="numeroAdresse" nillable="true" type="soapenc:int"/>
+     <element name="numeroSecSoc" nillable="true" type="soapenc:string"/>
+     <element name="prenom" nillable="true" type="soapenc:string"/>
+     <element name="prenomAutre" nillable="true" type="soapenc:string"/>
+     <element name="rueAdresse" nillable="true" type="soapenc:string"/>
+     <element name="taux" nillable="true" type="soapenc:double"/>
+     <element name="telephone" nillable="true" type="soapenc:string"/>
+     <element name="ville" nillable="true" type="soapenc:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="candidat">
+    <sequence>
+     <element name="coopteur" nillable="true" type="tns1:coopteur"/>
+     <element name="id_candidat" nillable="true" type="soapenc:int"/>
+     <element name="identite" nillable="true" type="tns1:identite"/>
+     <element name="rcc_age" nillable="true" type="soapenc:int"/>
+     <element name="rcc_flg_interne" nillable="true" type="soapenc:int"/>
+     <element name="rcc_lien" nillable="true" type="soapenc:string"/>
+     <element name="rcc_nbEnfants" nillable="true" type="soapenc:int"/>
+     <element name="rcc_obs" nillable="true" type="soapenc:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="retourCandidat">
+    <complexContent>
+     <extension base="tns2:RetourWSBean">
+      <sequence>
+       <element name="candidats" nillable="true" type="impl:ArrayOf_tns1_candidat"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="critereCandidature">
+    <sequence>
+     <element name="codeOrigine" nillable="true" type="soapenc:int"/>
+     <element name="codeStade" nillable="true" type="soapenc:int"/>
+     <element name="debut_reception" nillable="true" type="soapenc:string"/>
+     <element name="fin_reception" nillable="true" type="soapenc:string"/>
+     <element name="idCandidat" nillable="true" type="soapenc:int"/>
+     <element name="idOffre" nillable="true" type="soapenc:int"/>
+     <element name="idPoste" nillable="true" type="soapenc:int"/>
+     <element name="idReponsable" nillable="true" type="soapenc:int"/>
+     <element name="spontanee" nillable="true" type="soapenc:boolean"/>
+    </sequence>
+   </complexType>
+   <complexType name="etablissement">
+    <complexContent>
+     <extension base="tns3:Referentiel">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="motifstade">
+    <complexContent>
+     <extension base="tns3:Referentiel">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="origine">
+    <complexContent>
+     <extension base="tns3:Referentiel">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="poste">
+    <complexContent>
+     <extension base="tns3:Referentiel">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="responsable">
+    <complexContent>
+     <extension base="tns3:Referentiel">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="stade">
+    <complexContent>
+     <extension base="tns3:Referentiel">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="supportOffre">
+    <complexContent>
+     <extension base="tns3:Referentiel">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="theme">
+    <complexContent>
+     <extension base="tns3:Referentiel">
+      <sequence>
+       <element name="codeDomaine" nillable="true" type="soapenc:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="typeEmploi">
+    <complexContent>
+     <extension base="tns3:Referentiel">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="candidature">
+    <sequence>
+     <element name="coopteur" nillable="true" type="tns1:coopteur"/>
+     <element name="etablissement" nillable="true" type="tns1:etablissement"/>
+     <element name="id_candidat" nillable="true" type="soapenc:int"/>
+     <element name="id_offre" nillable="true" type="soapenc:int"/>
+     <element name="motif" nillable="true" type="tns1:motifstade"/>
+     <element name="origine" nillable="true" type="tns1:origine"/>
+     <element name="postes" nillable="true" type="impl:ArrayOf_tns1_poste"/>
+     <element name="rcu_code" nillable="true" type="soapenc:string"/>
+     <element name="rcu_dat_dispo" nillable="true" type="soapenc:string"/>
+     <element name="rcu_dat_enregistrement" nillable="true" type="soapenc:string"/>
+     <element name="rcu_dat_envoi" nillable="true" type="soapenc:string"/>
+     <element name="rcu_dat_reception" nillable="true" type="soapenc:string"/>
+     <element name="rcu_dat_reponse" nillable="true" type="soapenc:string"/>
+     <element name="rcu_dat_stade" nillable="true" type="soapenc:string"/>
+     <element name="rcu_delai_conservation" nillable="true" type="soapenc:int"/>
+     <element name="rcu_flg_reponse" nillable="true" type="soapenc:int"/>
+     <element name="rcu_flg_spontane" nillable="true" type="soapenc:int"/>
+     <element name="rcu_id" nillable="true" type="soapenc:int"/>
+     <element name="rcu_lien" nillable="true" type="soapenc:string"/>
+     <element name="rcu_obs" nillable="true" type="soapenc:string"/>
+     <element name="responssable" nillable="true" type="tns1:responsable"/>
+     <element name="stade" nillable="true" type="tns1:stade"/>
+     <element name="supportoffre" nillable="true" type="tns1:supportOffre"/>
+     <element name="theme" nillable="true" type="tns1:theme"/>
+     <element name="typeemploi" nillable="true" type="tns1:typeEmploi"/>
+    </sequence>
+   </complexType>
+   <complexType name="retourCandidature">
+    <complexContent>
+     <extension base="tns2:RetourWSBean">
+      <sequence>
+       <element name="candidatures" nillable="true" type="impl:ArrayOf_tns1_candidature"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="critereCandidat">
+    <sequence>
+     <element name="code_postal" nillable="true" type="soapenc:string"/>
+     <element name="debut_disponibilite" nillable="true" type="soapenc:string"/>
+     <element name="fin_disponibilite" nillable="true" type="soapenc:string"/>
+     <element name="flg_emploi" nillable="true" type="soapenc:boolean"/>
+     <element name="flg_public_prive" nillable="true" type="soapenc:boolean"/>
+     <element name="nom" nillable="true" type="soapenc:string"/>
+     <element name="prenom" nillable="true" type="soapenc:string"/>
+     <element name="statut" nillable="true" type="soapenc:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="critereOffreEmploi">
+    <sequence>
+     <element name="cabinet" nillable="true" type="soapenc:int"/>
+     <element name="declaration_debut" nillable="true" type="soapenc:string"/>
+     <element name="declaration_fin" nillable="true" type="soapenc:string"/>
+     <element name="mode_recrutement" nillable="true" type="soapenc:int"/>
+     <element name="non_pourvu" type="xsd:boolean"/>
+     <element name="poste" nillable="true" type="soapenc:int"/>
+     <element name="pourvu" type="xsd:boolean"/>
+     <element name="reponse_debut" nillable="true" type="soapenc:string"/>
+     <element name="reponse_fin" nillable="true" type="soapenc:string"/>
+     <element name="serviceDemandeur" nillable="true" type="soapenc:int"/>
+     <element name="type_emploi" nillable="true" type="soapenc:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="offreEmploi">
+    <sequence>
+     <element name="code" nillable="true" type="soapenc:string"/>
+     <element name="codeCabinet" nillable="true" type="soapenc:int"/>
+     <element name="codeEtablissement" nillable="true" type="soapenc:string"/>
+     <element name="codeModerecrutement" nillable="true" type="soapenc:int"/>
+     <element name="codeMotifOffre" nillable="true" type="soapenc:int"/>
+     <element name="codePoste" nillable="true" type="soapenc:int"/>
+     <element name="codeService" nillable="true" type="soapenc:int"/>
+     <element name="codeTypeEmploi" nillable="true" type="soapenc:string"/>
+     <element name="contact" nillable="true" type="soapenc:string"/>
+     <element name="dateAPourvoir" nillable="true" type="soapenc:string"/>
+     <element name="dateDebutReponse" nillable="true" type="soapenc:string"/>
+     <element name="dateDeclaration" nillable="true" type="soapenc:string"/>
+     <element name="dateFinReponse" nillable="true" type="soapenc:string"/>
+     <element name="dateValidite" nillable="true" type="soapenc:string"/>
+     <element name="duree" nillable="true" type="soapenc:int"/>
+     <element name="dureeEssai" nillable="true" type="soapenc:int"/>
+     <element name="idOffre" nillable="true" type="soapenc:int"/>
+     <element name="libelle" nillable="true" type="soapenc:string"/>
+     <element name="libellePosteLibre" nillable="true" type="soapenc:string"/>
+     <element name="posteLibre" type="xsd:boolean"/>
+    </sequence>
+   </complexType>
+   <complexType name="retourOffreEmploi">
+    <complexContent>
+     <extension base="tns2:RetourWSBean">
+      <sequence>
+       <element name="offreEmplois" nillable="true" type="impl:ArrayOf_tns1_offreEmploi"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="competences">
+    <sequence>
+     <element name="codeCompetence" nillable="true" type="soapenc:int"/>
+     <element name="commentaire" nillable="true" type="soapenc:string"/>
+     <element name="dateApplication" nillable="true" type="soapenc:string"/>
+     <element name="dateAquisition" nillable="true" type="soapenc:string"/>
+     <element name="dateFinApplication" nillable="true" type="soapenc:string"/>
+     <element name="dateFinAquisition" nillable="true" type="soapenc:string"/>
+     <element name="equivalence" type="xsd:boolean"/>
+     <element name="libEquivalence" nillable="true" type="soapenc:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="complementcs">
+    <sequence>
+     <element name="codeComplement" nillable="true" type="soapenc:int"/>
+     <element name="observation" nillable="true" type="soapenc:string"/>
+     <element name="valeur" nillable="true" type="soapenc:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="domaine">
+    <complexContent>
+     <extension base="tns3:Referentiel">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="formations">
+    <sequence>
+     <element name="commentaire" nillable="true" type="soapenc:string"/>
+     <element name="dateAquisition" nillable="true" type="soapenc:string"/>
+     <element name="dateFinAquisition" nillable="true" type="soapenc:string"/>
+     <element name="libelle" nillable="true" type="soapenc:string"/>
+     <element name="opc_domaine" nillable="true" type="tns1:domaine"/>
+     <element name="opc_theme" nillable="true" type="tns1:theme"/>
+    </sequence>
+   </complexType>
+   <complexType name="detailCVs">
+    <complexContent>
+     <extension base="tns1:formations">
+      <sequence>
+       <element name="codeRubriqueCV" nillable="true" type="soapenc:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="diplomes">
+    <sequence>
+     <element name="codeDiplome" nillable="true" type="soapenc:string"/>
+     <element name="codeMention" nillable="true" type="soapenc:int"/>
+     <element name="commentaire" nillable="true" type="soapenc:string"/>
+     <element name="dateFinObtention" nillable="true" type="soapenc:string"/>
+     <element name="dateObtention" nillable="true" type="soapenc:string"/>
+     <element name="equivalence" type="xsd:boolean"/>
+     <element name="libEquivalence" nillable="true" type="soapenc:string"/>
+     <element name="lieuObtention" nillable="true" type="soapenc:string"/>
+     <element name="numDiplome" nillable="true" type="soapenc:string"/>
+     <element name="obtenu" type="xsd:boolean"/>
+     <element name="opc_domaine" nillable="true" type="tns1:theme"/>
+     <element name="opc_niveau" nillable="true" type="tns5:NiveauDiplome"/>
+     <element name="opc_theme" nillable="true" type="tns1:theme"/>
+    </sequence>
+   </complexType>
+   <complexType name="creerCandidat">
+    <sequence>
+     <element name="competenceCandidatBeans" nillable="true" type="impl:ArrayOf_tns1_competences"/>
+     <element name="complementCandidatBeans" nillable="true" type="impl:ArrayOf_tns1_complementcs"/>
+     <element name="detailCVCandidatBeans" nillable="true" type="impl:ArrayOf_tns1_detailCVs"/>
+     <element name="diplomeCandidatBeans" nillable="true" type="impl:ArrayOf_tns1_diplomes"/>
+     <element name="formationCandidatBeans" nillable="true" type="impl:ArrayOf_tns1_formations"/>
+     <element name="identiteCandidatBean" nillable="true" type="tns1:identite"/>
+     <element name="matricule" nillable="true" type="soapenc:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="retourCreationCandidat">
+    <complexContent>
+     <extension base="tns2:RetourWSBean">
+      <sequence>
+       <element name="idCandidat" nillable="true" type="soapenc:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="creationCandidature">
+    <sequence>
+     <element name="code" nillable="true" type="soapenc:string"/>
+     <element name="codeCoopteur" nillable="true" type="soapenc:int"/>
+     <element name="codeDomaine" nillable="true" type="soapenc:string"/>
+     <element name="codeEtablissement" nillable="true" type="soapenc:string"/>
+     <element name="codeMotif" nillable="true" type="soapenc:string"/>
+     <element name="codeOffreEmploi" nillable="true" type="soapenc:int"/>
+     <element name="codeOrigine" nillable="true" type="soapenc:int"/>
+     <element name="codePoste1" nillable="true" type="soapenc:int"/>
+     <element name="codePoste2" nillable="true" type="soapenc:int"/>
+     <element name="codePoste3" nillable="true" type="soapenc:int"/>
+     <element name="codeResponsable" nillable="true" type="soapenc:int"/>
+     <element name="codeStade" nillable="true" type="soapenc:int"/>
+     <element name="codeTypeEmploi" nillable="true" type="soapenc:string"/>
+     <element name="dateDisponibilite" nillable="true" type="soapenc:string"/>
+     <element name="dateEnregistrement" nillable="true" type="soapenc:string"/>
+     <element name="dateEnvoi" nillable="true" type="soapenc:string"/>
+     <element name="dateReception" nillable="true" type="soapenc:string"/>
+     <element name="dateReponse" nillable="true" type="soapenc:string"/>
+     <element name="dateStade" nillable="true" type="soapenc:string"/>
+     <element name="idCandidat" nillable="true" type="soapenc:int"/>
+     <element name="libellePoste1" nillable="true" type="soapenc:string"/>
+     <element name="libellePoste2" nillable="true" type="soapenc:string"/>
+     <element name="libellePoste3" nillable="true" type="soapenc:string"/>
+     <element name="moisConservation" nillable="true" type="soapenc:int"/>
+     <element name="observation" nillable="true" type="soapenc:string"/>
+     <element name="posteLibre" type="xsd:boolean"/>
+     <element name="spontanee" type="xsd:boolean"/>
+    </sequence>
+   </complexType>
+   <complexType name="retourCreationCandidature">
+    <complexContent>
+     <extension base="tns2:RetourWSBean">
+      <sequence>
+       <element name="idCandidature" nillable="true" type="soapenc:int"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="retourCreationOffre">
+    <complexContent>
+     <extension base="tns2:RetourWSBean">
+      <sequence>
+       <element name="idOffre" nillable="true" type="soapenc:int"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+  <schema targetNamespace="http://172.16.20.96:8080/rhtest/rhtest/Recrutement" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="Recrutement"/>
+   <import namespace="http://exception.metier.framework.civitas.fr"/>
+   <import namespace="http://ref.bean.rc.rhcommun.metier.civitas.fr"/>
+   <import namespace="http://ref.bean.ws.rhcommun.metier.civitas.fr"/>
+   <import namespace="http://bean.ws.framework.civitas.fr"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="ArrayOf_tns1_MessagesWSBean">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:MessagesWSBean[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_candidat">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:candidat[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_poste">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:poste[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_candidature">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:candidature[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_offreEmploi">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:offreEmploi[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_competences">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:competences[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_complementcs">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:complementcs[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_detailCVs">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:detailCVs[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_diplomes">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:diplomes[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_formations">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:formations[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+  </schema>
+  <schema targetNamespace="http://bean.ws.framework.civitas.fr" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="Recrutement"/>
+   <import namespace="http://exception.metier.framework.civitas.fr"/>
+   <import namespace="http://ref.bean.rc.rhcommun.metier.civitas.fr"/>
+   <import namespace="http://ref.bean.ws.rhcommun.metier.civitas.fr"/>
+   <import namespace="http://172.16.20.96:8080/rhtest/rhtest/Recrutement"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="RetourWSBean">
+    <sequence>
+     <element name="etat" type="xsd:boolean"/>
+     <element name="messagesWSBean" nillable="true" type="impl:ArrayOf_tns1_MessagesWSBean"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema targetNamespace="http://ref.bean.ws.rhcommun.metier.civitas.fr" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="Recrutement"/>
+   <import namespace="http://exception.metier.framework.civitas.fr"/>
+   <import namespace="http://ref.bean.rc.rhcommun.metier.civitas.fr"/>
+   <import namespace="http://172.16.20.96:8080/rhtest/rhtest/Recrutement"/>
+   <import namespace="http://bean.ws.framework.civitas.fr"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType abstract="true" name="Referentiel">
+    <sequence>
+     <element name="code" nillable="true" type="xsd:anyType"/>
+     <element name="libelle" nillable="true" type="soapenc:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema targetNamespace="http://exception.metier.framework.civitas.fr" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="Recrutement"/>
+   <import namespace="http://ref.bean.rc.rhcommun.metier.civitas.fr"/>
+   <import namespace="http://ref.bean.ws.rhcommun.metier.civitas.fr"/>
+   <import namespace="http://172.16.20.96:8080/rhtest/rhtest/Recrutement"/>
+   <import namespace="http://bean.ws.framework.civitas.fr"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType abstract="true" name="MetierException">
+    <sequence/>
+   </complexType>
+  </schema>
+  <schema targetNamespace="http://ref.bean.rc.rhcommun.metier.civitas.fr" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="Recrutement"/>
+   <import namespace="http://exception.metier.framework.civitas.fr"/>
+   <import namespace="http://ref.bean.ws.rhcommun.metier.civitas.fr"/>
+   <import namespace="http://172.16.20.96:8080/rhtest/rhtest/Recrutement"/>
+   <import namespace="http://bean.ws.framework.civitas.fr"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="NiveauDiplome">
+    <complexContent>
+     <extension base="tns3:Referentiel">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getCandidatureResponse">
+
+      <wsdl:part name="getCandidatureReturn" type="tns1:retourCandidature"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="pingRequest">
+
+   </wsdl:message>
+
+   <wsdl:message name="pingResponse">
+
+      <wsdl:part name="pingReturn" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="creerCandidatRequest">
+
+      <wsdl:part name="candidatBean" type="tns1:creerCandidat"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="creerOffreEmploiResponse">
+
+      <wsdl:part name="creerOffreEmploiReturn" type="tns1:retourCreationOffre"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCandidatsResponse">
+
+      <wsdl:part name="getCandidatsReturn" type="tns1:retourCandidat"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="creerCandidatureRequest">
+
+      <wsdl:part name="candidatureBean" type="tns1:creationCandidature"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getOffreEmploiRequest">
+
+      <wsdl:part name="rcf_id" type="soapenc:int"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCandidatureRequest">
+
+      <wsdl:part name="rcu_id" type="soapenc:int"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="MetierException">
+
+      <wsdl:part name="fault" type="tns4:MetierException"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCandidatsRequest">
+
+      <wsdl:part name="critere" type="tns1:critereCandidat"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="creerCandidatureResponse">
+
+      <wsdl:part name="creerCandidatureReturn" type="tns1:retourCreationCandidature"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="creerCandidatResponse">
+
+      <wsdl:part name="creerCandidatReturn" type="tns1:retourCreationCandidat"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCandidaturesRequest">
+
+      <wsdl:part name="critere" type="tns1:critereCandidature"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getOffreEmploiResponse">
+
+      <wsdl:part name="getOffreEmploiReturn" type="tns1:retourOffreEmploi"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCandidatRequest">
+
+      <wsdl:part name="rcc_id" type="soapenc:int"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getOffreEmploisResponse">
+
+      <wsdl:part name="getOffreEmploisReturn" type="tns1:retourOffreEmploi"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="creerOffreEmploiRequest">
+
+      <wsdl:part name="offreEmploiBean" type="tns1:offreEmploi"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCandidaturesResponse">
+
+      <wsdl:part name="getCandidaturesReturn" type="tns1:retourCandidature"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getOffreEmploisRequest">
+
+      <wsdl:part name="critere" type="tns1:critereOffreEmploi"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCandidatResponse">
+
+      <wsdl:part name="getCandidatReturn" type="tns1:retourCandidat"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="RecrutementServiceImpl">
+
+      <wsdl:operation name="getCandidat" parameterOrder="rcc_id">
+
+         <wsdl:input message="impl:getCandidatRequest" name="getCandidatRequest"/>
+
+         <wsdl:output message="impl:getCandidatResponse" name="getCandidatResponse"/>
+
+         <wsdl:fault message="impl:MetierException" name="MetierException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCandidatures" parameterOrder="critere">
+
+         <wsdl:input message="impl:getCandidaturesRequest" name="getCandidaturesRequest"/>
+
+         <wsdl:output message="impl:getCandidaturesResponse" name="getCandidaturesResponse"/>
+
+         <wsdl:fault message="impl:MetierException" name="MetierException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCandidats" parameterOrder="critere">
+
+         <wsdl:input message="impl:getCandidatsRequest" name="getCandidatsRequest"/>
+
+         <wsdl:output message="impl:getCandidatsResponse" name="getCandidatsResponse"/>
+
+         <wsdl:fault message="impl:MetierException" name="MetierException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getOffreEmplois" parameterOrder="critere">
+
+         <wsdl:input message="impl:getOffreEmploisRequest" name="getOffreEmploisRequest"/>
+
+         <wsdl:output message="impl:getOffreEmploisResponse" name="getOffreEmploisResponse"/>
+
+         <wsdl:fault message="impl:MetierException" name="MetierException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ping">
+
+         <wsdl:input message="impl:pingRequest" name="pingRequest"/>
+
+         <wsdl:output message="impl:pingResponse" name="pingResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="creerCandidat" parameterOrder="candidatBean">
+
+         <wsdl:input message="impl:creerCandidatRequest" name="creerCandidatRequest"/>
+
+         <wsdl:output message="impl:creerCandidatResponse" name="creerCandidatResponse"/>
+
+         <wsdl:fault message="impl:MetierException" name="MetierException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="creerCandidature" parameterOrder="candidatureBean">
+
+         <wsdl:input message="impl:creerCandidatureRequest" name="creerCandidatureRequest"/>
+
+         <wsdl:output message="impl:creerCandidatureResponse" name="creerCandidatureResponse"/>
+
+         <wsdl:fault message="impl:MetierException" name="MetierException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="creerOffreEmploi" parameterOrder="offreEmploiBean">
+
+         <wsdl:input message="impl:creerOffreEmploiRequest" name="creerOffreEmploiRequest"/>
+
+         <wsdl:output message="impl:creerOffreEmploiResponse" name="creerOffreEmploiResponse"/>
+
+         <wsdl:fault message="impl:MetierException" name="MetierException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCandidature" parameterOrder="rcu_id">
+
+         <wsdl:input message="impl:getCandidatureRequest" name="getCandidatureRequest"/>
+
+         <wsdl:output message="impl:getCandidatureResponse" name="getCandidatureResponse"/>
+
+         <wsdl:fault message="impl:MetierException" name="MetierException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getOffreEmploi" parameterOrder="rcf_id">
+
+         <wsdl:input message="impl:getOffreEmploiRequest" name="getOffreEmploiRequest"/>
+
+         <wsdl:output message="impl:getOffreEmploiResponse" name="getOffreEmploiResponse"/>
+
+         <wsdl:fault message="impl:MetierException" name="MetierException"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="RecrutementSoapBinding" type="impl:RecrutementServiceImpl">
+
+      <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getCandidat">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getCandidatRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://impl.service.rc.rhcommun.metier.civitas.fr" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getCandidatResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://172.16.20.96:8080/rhtest/rhtest/Recrutement" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="MetierException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="MetierException" namespace="http://172.16.20.96:8080/rhtest/rhtest/Recrutement" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCandidatures">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getCandidaturesRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://impl.service.rc.rhcommun.metier.civitas.fr" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getCandidaturesResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://172.16.20.96:8080/rhtest/rhtest/Recrutement" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="MetierException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="MetierException" namespace="http://172.16.20.96:8080/rhtest/rhtest/Recrutement" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCandidats">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getCandidatsRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://impl.service.rc.rhcommun.metier.civitas.fr" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getCandidatsResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://172.16.20.96:8080/rhtest/rhtest/Recrutement" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="MetierException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="MetierException" namespace="http://172.16.20.96:8080/rhtest/rhtest/Recrutement" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getOffreEmplois">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getOffreEmploisRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://impl.service.rc.rhcommun.metier.civitas.fr" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getOffreEmploisResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://172.16.20.96:8080/rhtest/rhtest/Recrutement" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="MetierException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="MetierException" namespace="http://172.16.20.96:8080/rhtest/rhtest/Recrutement" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ping">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="pingRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://impl.service.rc.rhcommun.metier.civitas.fr" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="pingResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://172.16.20.96:8080/rhtest/rhtest/Recrutement" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="creerCandidat">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="creerCandidatRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://impl.service.rc.rhcommun.metier.civitas.fr" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="creerCandidatResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://172.16.20.96:8080/rhtest/rhtest/Recrutement" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="MetierException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="MetierException" namespace="http://172.16.20.96:8080/rhtest/rhtest/Recrutement" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="creerCandidature">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="creerCandidatureRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://impl.service.rc.rhcommun.metier.civitas.fr" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="creerCandidatureResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://172.16.20.96:8080/rhtest/rhtest/Recrutement" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="MetierException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="MetierException" namespace="http://172.16.20.96:8080/rhtest/rhtest/Recrutement" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="creerOffreEmploi">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="creerOffreEmploiRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://impl.service.rc.rhcommun.metier.civitas.fr" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="creerOffreEmploiResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://172.16.20.96:8080/rhtest/rhtest/Recrutement" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="MetierException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="MetierException" namespace="http://172.16.20.96:8080/rhtest/rhtest/Recrutement" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCandidature">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getCandidatureRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://impl.service.rc.rhcommun.metier.civitas.fr" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getCandidatureResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://172.16.20.96:8080/rhtest/rhtest/Recrutement" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="MetierException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="MetierException" namespace="http://172.16.20.96:8080/rhtest/rhtest/Recrutement" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getOffreEmploi">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getOffreEmploiRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://impl.service.rc.rhcommun.metier.civitas.fr" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getOffreEmploiResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://172.16.20.96:8080/rhtest/rhtest/Recrutement" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="MetierException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="MetierException" namespace="http://172.16.20.96:8080/rhtest/rhtest/Recrutement" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="RecrutementServiceImplService">
+
+      <wsdl:port binding="impl:RecrutementSoapBinding" name="Recrutement">
+
+         <wsdlsoap:address location="http://172.16.20.96:8080/rhtest/rhtest/Recrutement"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

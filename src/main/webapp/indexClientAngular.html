@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="biblioApp"> 
+<head>
+<script type="text/javascript" src="js/angular.js"></script>
+<script type="text/javascript" src="js/biblio.js"></script>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body ng-controller="livreController">
+<div ng-if="!livre">
+<button ng-click="loadAll()">Load</button> &nbsp; <button ng-click="reset()">reset</button>
+<table>
+	<tr><td>Id</td><td>Titre</td><td>Auteur</td><td>Date parution</td></tr>
+	<!-- Construction dynamique du contenu du tableau -->
+	<tr ng-repeat="livre in livres">
+		<td style="color: blue; text-decoration: underline; pointer: cursor" ng-click="load(livre.id)">
+			{{livre.id}}
+		</td>
+		<td>{{livre.titre}}</td>
+		<td>{{livre.auteur}}</td>
+		<td>{{livre.parution}}</td>
+	</tr>
+</table>
+</div>
+<div ng-if="livre">
+	<pre>{{livre | json}}</pre><br/>
+	<button ng-click="back()">Back</button>
+</div>
+</body>
+</html>

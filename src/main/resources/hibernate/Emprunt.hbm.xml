@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping  package="entity">
+	<class name="Emprunt" >
+		<id name="id" column="ID_EMPRUNT" >
+			<generator class="native" />
+		</id>
+		<property name="debut" not-null="true"  type="date"/>
+		<property name="fin" type="date"/>
+		
+		<many-to-one name="livre" column="LIVRE_ID" not-null="true" />
+		<many-to-one name="adherent" column="ADHERENT_ID" not-null="true"/>
+	</class>
+</hibernate-mapping>

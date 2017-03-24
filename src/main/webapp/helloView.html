@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr" ng-app="helloApp" > 
+    <head>
+        <meta charset="utf-8" />
+        <title>HelloUser</title>        
+       <!-- <link rel="stylesheet" href="css/bootstrap.css">  -->
+        <script src="js/angular/angular.min.js"></script>
+        <script src="js/helloApp.js"></script>
+    </head>
+    <body>
+    <header> <h1>Welcome to AngularJS</h1> </header>
+    <section ng-controller="helloController" >
+         <input placeholder="Input your name..." ng-model="name" class="form-control" />
+         <input placeholder="Input your id ..." ng-model="id" class="form-control" />
+         <button type="button" ng-click="hello()"  class="btn btn-success">Hello</button>
+         <button type="button" ng-click="getPersonne()"  class="btn btn-success">Hello from id</button>
+         <button type="button" ng-click="getPersonneFromServer()"  class="btn btn-success">Hello from server</button>
+          <button type="button" ng-click="getPersonnesFromServer()"  class="btn btn-success">Personnes from server</button>
+         <button type="button" ng-click="reset()"  class="btn btn-warning">Reset</button>
+    <article >
+    	<h1>Hello {{greeting}}</h1>
+    	<table ng-if="personnes">
+		<tr><td style="width:50px"><b>Id</b></td><td style="width:100px"><b>Nom</b></td><td style="width:100px"><b>Prénom</b></td><td style="width:200px"><b>Email</b></td></tr>
+		<!-- Construction dynamique du contenu du tableau -->
+		<tr ng-repeat="personne in personnes">
+		<td style="color: blue; text-decoration: underline; cursor: pointer;" ng-click="edit(personne.id)"> 
+		{{personne.id}}</td>
+		<!-- <td >{{personne.id}}</td> -->
+		<td>{{personne.nom}}</td>
+		<td>{{personne.prenom}}</td>
+		<td>{{personne.email}}</td>
+	</tr>
+</table>
+    </article>
+    <article ng-if="personne">
+    <h1>Edition de la personne id={{personne.id}}</h1>
+    <form ng-submit="update()">
+         <input ng-model="personne.id" type="hidden"/>
+    	 <input ng-model="personne.nom" class="form-control" />
+    	 <input ng-model="personne.prenom" class="form-control" />
+    	 <input ng-model="personne.email" class="form-control" />
+    	 <button type="submit">Modifier</button>
+   </form>
+    </article>
+    
+    </section>
+    </body>
+</html>
+

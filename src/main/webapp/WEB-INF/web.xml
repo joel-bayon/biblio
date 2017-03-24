@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+		 http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+  <display-name>BiblioSpring</display-name>
+  <context-param>
+    <param-name>users</param-name>
+    <param-value>/WEB-INF/users.properties</param-value>
+  </context-param>
+  <session-config>
+    <session-timeout>0</session-timeout>
+  </session-config>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+  
+  <servlet>
+    <servlet-name>accueil</servlet-name>
+    <servlet-class>servlet.AccueilServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>authentification</servlet-name>
+    <servlet-class>servlet.AuthentificationServlet</servlet-class>
+  </servlet>
+  <servlet> 
+    <servlet-name>gestionLivre</servlet-name>
+    <servlet-class>servlet.GestionLivreServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>accueil</servlet-name>
+    <url-pattern>/home/accueil</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>authentification</servlet-name>
+    <url-pattern>/authentification/login</url-pattern>
+    <url-pattern>/authentification/execute</url-pattern>
+    <url-pattern>/authentification/deconnexion</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>gestionLivre</servlet-name>
+    <url-pattern>/gestionLivre/listerLivre</url-pattern>
+    <url-pattern>/gestionLivre/editerLivre</url-pattern>
+    <url-pattern>/gestionLivre/execute</url-pattern>
+    <url-pattern>/gestionLivre/exception</url-pattern>
+    <url-pattern>/gestionLivre/changerLangue</url-pattern>
+  </servlet-mapping>
+  
+<!--   <filter>
+  	<filter-name>authenticateFilter</filter-name>
+  	<filter-class>filter.AuthentificationFilter</filter-class>
+    </filter>
+  
+  <filter-mapping>
+    <filter-name>authenticateFilter</filter-name>
+    <servlet-name>gestionLivre</servlet-name>
+    <servlet-name>accueil</servlet-name>
+  </filter-mapping>  -->  
+  
+  
+  <!-- Configuration Spring MVC -->
+   <context-param>
+      <param-name>contextClass</param-name>
+      <param-value>
+          org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+      </param-value>
+  </context-param>
+
+  <!-- Configuration locations must consist of one or more comma- or space-delimited
+       fully-qualified @Configuration classes. Fully-qualified packages may also be
+       specified for component-scanning -->
+  <context-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>configuration.BiblioConfig</param-value>
+  </context-param>
+   
+   
+	<listener> <listener-class>
+		org.springframework.web.context.ContextLoaderListener
+	</listener-class> </listener>
+	  <listener>
+    <listener-class>listener.BibliothequeListener</listener-class>
+  </listener>
+ 
+  <servlet>
+		<servlet-name>spring-mvc</servlet-name>
+		<servlet-class>
+			org.springframework.web.servlet.DispatcherServlet
+		</servlet-class>
+		<init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>
+                /WEB-INF/spring-mvc.xml
+            </param-value>
+        </init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+  <servlet-mapping>
+		<servlet-name>spring-mvc</servlet-name>
+		<url-pattern>*.spring</url-pattern>
+	</servlet-mapping>
+  
+</web-app>
